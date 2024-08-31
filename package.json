@@ -1,24 +1,29 @@
 {
-  "name": "trackmybag",
-  "version": "1.0.0",
-  "description": "TrackMyBag is a luggage tracking system for airports that provides real-time updates on the status and location of passenger luggage. It features real-time tracking, notifications, and user management.",
-  "main": "index.js",
-"scripts": {
-  "start": "node server/server.js",
-  "dev": "nodemon server/server.js",
-  "client": "npm start --prefix client",
-  "client:dev": "npm run dev --prefix client"
-},
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.20.2",
-    "cors": "^2.8.5",
-    "express": "^4.19.2",
-    "mongoose": "^8.5.5"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.4"
-  }
+    "name": "track-my-bag",
+    "version": "1.0.0",
+    "description": "A smart luggage tracking solution.",
+    "main": "index.js",
+    "scripts": {
+        "start": "node app.js",
+        "client": "cd frontend && npm start",
+        "server": "cd backend && node app.js",
+        "dev": "concurrently \"npm run server\" \"npm run client\""
+    },
+    "dependencies": {
+        "axios": "^1.7.6",
+        "cors": "^2.8.5",
+        "express": "^4.19.2",
+        "leaflet": "^1.9.4",
+        "mongoose": "^6.0.12",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "react-leaflet": "^4.2.1",
+        "socket.io": "^4.7.5"
+    },
+    "devDependencies": {
+        "concurrently": "^6.2.1"
+    },
+    "engines": {
+        "node": ">=14.0.0"
+    }
 }

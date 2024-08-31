@@ -1,0 +1,43 @@
+.App {
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  form {
+    margin: 20px auto;
+    max-width: 600px;
+  }
+  
+  input {
+    margin: 10px 0;
+    padding: 8px;
+    width: 100%;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
