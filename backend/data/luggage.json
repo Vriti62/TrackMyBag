@@ -1,0 +1,30 @@
+[
+  {
+    "id": "2",
+    "name": "chloe",
+    "status": "check-out",
+    "location": "terminal 3",
+    "num_lugg": "1"
+  },
+  {
+    "id": "3",
+    "name": "Red Bag 1",
+    "status": "Checked in",
+    "location": "GATE 3",
+    "num_lugg": "2"
+  },
+  {
+    "id": "4",
+    "name": "Cabin Bag",
+    "status": "Checked in",
+    "location": "Airport",
+    "num_lugg": "2"
+  },
+  {
+    "id": "5",
+    "name": "suitcase",
+    "status": "in transit",
+    "location": "airport",
+    "num_lugg": "5"
+  }
+]
