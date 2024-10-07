@@ -1,0 +1,22 @@
+{
+  "name": "trackmybag",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+   "start": "concurrently \"npm run server\" \"npm run client\" ",
+    "client": "cd frontend && npm start",
+    "server": "cd backend && npm start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4",
+    "socket.io": "^4.7.5"
+  }
+}
