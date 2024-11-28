@@ -1,0 +1,38 @@
+/* Resetting default margins and paddings for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Ensuring html and body take up the full viewport height */
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevents scrollbars from appearing */
+}
+
+/* Styling for the map container */
+#map {
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    position: absolute; /* Ensures the map covers the entire viewport */
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    background-color: #e0e0e0; /* Optional: a light gray background for better visibility */
+}
+
+/* Optional: If you want the map to be responsive to changes in viewport size */
+@media (orientation: landscape) {
+    #map {
+        height: 100vh; /* Adjust height for landscape orientation */
+    }
+}
+
+@media (orientation: portrait) {
+    #map {
+        height: 100vh; /* Adjust height for portrait orientation */
+    }
+}

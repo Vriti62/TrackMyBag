@@ -1,0 +1,113 @@
+/* src/styles/signup.css */
+
+.main {
+    display: flex;
+    height: 100vh;
+    background-color: linear-gradient(135deg, #141E30, #243B55); /* Custom gradient */
+    font-family: 'Arial', sans-serif;
+}
+.side-image {
+
+    margin-right: 2rem;
+    border-radius: 50%;
+}
+
+.signup-form {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: linear-gradient(135deg, #141E30, #243B55); /* Custom gradient */
+    box-shadow: 0 0 20px rgba(182, 218, 243, 0.89);
+}
+
+.heading{
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #124d6a;
+    text-align: center;
+}
+
+.inputs {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.boxes {
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #a9c7e4;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.boxes:focus {
+    border-color: #65a8f1;
+    outline: none;
+}
+
+.checkbox {
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: #bed9e8;
+}
+
+.checkbox-text {
+    margin-right: 10px;
+}
+
+.error {
+    color: #ff4d4d;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.success {
+    color: #28a745;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.signup-button {
+    padding: 15px;
+    background-color:rgb(101, 155, 236);
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.signup-button:hover {
+    background-color: #041b33;
+}
+
+.redirect {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.redirect .login_ {
+    background: none;
+    border: 1px solid rgb(101, 155, 236);
+    color: black;
+    border-radius: 10px;
+    background-color: rgb(146, 181, 220);
+    width:21vw;
+    padding: 15px;
+    height:auto;
+/* color: #86aad0; */
+    cursor: pointer;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.redirect .login_:hover {
+    background-color: #1c73d0;
+}
