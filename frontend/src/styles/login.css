@@ -1,0 +1,116 @@
+/* General styling for the login container */
+.login__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Center vertically */
+  background: linear-gradient(135deg, #f0f4ff, #e2e8f0); /* Soft background gradient */
+  padding: 20px;
+}
+
+/* Heading styling */
+.login__title {
+  font-size: 2.5rem; /* Increased size for prominence */
+  margin-bottom: 10px; /* Add space below */
+  color: #2c3e50; /* Dark color for better contrast */
+  font-weight: 700; /* Bold for emphasis */
+}
+
+/* Paragraph styling */
+.login__subtitle {
+  font-size: 1.1rem; /* Slightly larger font size */
+  margin-bottom: 20px; /* Space between heading and form */
+  color: #34495e; /* Slightly lighter for differentiation */
+  text-align: center; /* Center text for better layout */
+}
+
+/* Styling for the form */
+.login__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Full width */
+  max-width: 450px; /* Increased max width for larger screens */
+  background-color: #ffffff; /* White background for the form */
+  padding: 30px; /* More padding for a spacious feel */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Deeper shadow for depth */
+}
+
+/* Input field styling */
+.login__input-field-container {
+  position: relative; /* Position relative for absolute icons */
+  margin-bottom: 20px; /* Increased space between inputs */
+}
+
+/* Icon styling */
+.login__input-icon {
+  position: absolute; /* Position the icon */
+  left: 10px; /* Space from the left */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Adjust vertical position */
+  color: #8e44ad; /* Icon color */
+}
+
+/* Input field styling */
+.login__input-field {
+  padding: 15px 15px 15px 40px; /* Added left padding for the icon */
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 8px; /* More rounded corners for inputs */
+  width: 87%; /* Full width */
+  font-size: 1rem; /* Font size */
+  transition: border-color 0.3s; /* Smooth transition for focus effect */
+}
+
+/* Input focus styling */
+.login__input-field:focus {
+  border-color: #8e44ad; /* Dark purple on focus */
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 5px rgba(142, 68, 173, 0.5); /* Subtle shadow on focus */
+}
+
+/* Placeholder styling */
+.login__input-field::placeholder {
+  color: #aaa; /* Lighter placeholder color */
+  opacity: 1; /* Ensure the placeholder is fully opaque */
+}
+
+/* Button styling */
+.login__button {
+  padding: 15px; /* Increased padding */
+  background-color: #8e44ad; /* Purple button */
+  color: #ffffff; /* White text */
+  border: none; /* No border */
+  border-radius: 8px; /* More rounded corners */
+  cursor: pointer; /* Pointer cursor */
+  font-size: 1.1rem; /* Slightly larger font size */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth background transition and scale effect */
+}
+
+/* Button hover effect */
+.login__button:hover {
+  background-color: #732d91; /* Darker purple on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+/* Error message styling */
+.login__error-message {
+  color: #e74c3c; /* Red for errors */
+  margin-bottom: 15px; /* Space below error message */
+  font-size: 0.9rem; /* Slightly smaller font size */
+}
+
+/* Responsive styling */
+@media (max-width: 600px) {
+  .login__container {
+    padding: 15px; /* Adjust padding for smaller screens */
+  }
+
+  .login__form {
+    padding: 20px; /* Reduce padding for smaller screens */
+  }
+
+  .login__button {
+    font-size: 1rem; /* Adjust font size for buttons */
+  }
+}
