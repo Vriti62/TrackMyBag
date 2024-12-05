@@ -11,6 +11,7 @@ import {
   MapPin,
   Shield,
   ShoppingCart,
+  Package,
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom"; // Import useNavigate for redirection
 import "../styles/UserDashboard.css";
@@ -298,6 +299,35 @@ export default function TrackMyBagDashboard() {
             )}
           </section>
 
+          <section className="dashboard__section dashboard__luggage">
+            <h2 className="dashboard__section-title">
+              <Package className="dashboard__section-icon" />
+              My Luggage
+            </h2>
+            {userData.luggage && userData.luggage.length > 0 ? (
+              userData.luggage.map((item, index) => (
+                <div key={index} className="dashboard__luggage-item">
+                  <div className="dashboard__luggage-details">
+                    <h3 className="dashboard__luggage-name">{item.name}</h3>
+                    <div className="dashboard__luggage-info">
+                      <span className={`dashboard__luggage-status status-${item.status.toLowerCase()}`}>
+                        {item.status}
+                      </span>
+                      <span className="dashboard__luggage-location">
+                        📍 {item.location}
+                      </span>
+                      <span className="dashboard__luggage-count">
+                        Pieces: {item.num_lugg}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p className="dashboard__no-luggage">No luggage registered yet</p>
+            )}
+          </section>
+
           <section className="dashboard__section dashboard__tracking-links">
             <h2 className="dashboard__section-title">
               <ExternalLink className="dashboard__section-icon" />
@@ -333,6 +363,8 @@ export default function TrackMyBagDashboard() {
               </div>
             ))}
           </section>
+
+ 
         </div>
       </main>
 

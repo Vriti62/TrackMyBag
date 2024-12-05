@@ -514,3 +514,78 @@ body {
   color: red;
   font-weight: bold;
 }
+
+/* Luggage Section Styles */
+.dashboard__luggage {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard__luggage-item {
+  background: #f8f9fa;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  transition: transform 0.2s;
+}
+
+.dashboard__luggage-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard__luggage-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+}
+
+.dashboard__luggage-info {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+}
+
+.dashboard__luggage-status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.status-checked-in {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.status-in-transit {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.status-delivered {
+  background: #e8f5e9;
+  color: #388e3c;
+}
+
+.dashboard__luggage-location {
+  color: #616161;
+}
+
+.dashboard__luggage-count {
+  color: #616161;
+  background: #eeeeee;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.dashboard__no-luggage {
+  text-align: center;
+  color: #757575;
+  padding: 1rem;
+  font-style: italic;
+}

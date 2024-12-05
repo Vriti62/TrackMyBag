@@ -116,3 +116,42 @@ exports.deleteLuggage = (req, res) => {
     res.status(500).json({ message: "Error deleting luggage", error });
   }
 };
+
+exports.addUserTrackingLink = async (req, res) => {
+  const { userId } = req.params;
+  const { link } = req.body;
+
+  try {
+    // Validate tracking link
+    if (!link) {
+      return res.status(400).json({ error: 'Tracking link is required' });
+    }
+
+    // Read current user data
+    const users = readUserData();
+    const userIndex = users.findIndex(user => user.id === userId);
+
+    if (userIndex === -1) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    // Initialize trackingLinks array if it doesn't exist
+    if (!users[userIndex].trackingLinks) {
+      users[userIndex].trackingLinks = [];
+    }
+
+    // Add new tracking link
+    users[userIndex].trackingLinks.push(link);
+
+    // Save updated user data
+    writeUserData(users);
+
+    res.status(201).json({
+      message: 'Tracking link added successfully',
+      trackingLinks: users[userIndex].trackingLinks
+    });
+  } catch (error) {
+    console.error('Error adding tracking link to user:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};

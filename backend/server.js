@@ -9,9 +9,7 @@ require('dotenv').config();
 const {
   authenticateToken,
   requireRole,
-} = require("./middleware/authMiddleware"); // Import middleware
-
-require("dotenv").config();
+} = require("./middleware/authMiddleware");
 
 // Import controllers
 const userController = require("./controllers/userController");
@@ -20,15 +18,12 @@ const supportController = require("./controllers/supportcontroller");
 const chatbotRoutes = require("./routes/chatbotRoutes");
 
 const app = express();
-const port = process.env.PORT || 3000; // Use environment variable or default to 3000
+const port = process.env.PORT || 3000;
 
 const cookieParser = require("cookie-parser");
-// Middleware
 app.use(cookieParser());
-
-// Middleware
-app.use(cors()); // Enable CORS
-app.use(bodyParser.json()); // Parse JSON bodies
+app.use(cors());
+app.use(bodyParser.json());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Create uploads directory if it doesn't exist
@@ -39,43 +34,52 @@ if (!fs.existsSync(uploadDir)) {
 
 // chatbot routes
 app.use("/api", chatbotRoutes);
+
 // User Routes
 app.post("/api/users/register", userController.registerUser);
 app.post("/api/users/login", userController.loginUser);
+app.get("/api/users/profile", authenticateToken, userController.findUser);
+app.get("/api/users", authenticateToken, userController.getAllUsers);
+app.put("/api/users/profile/:id", authenticateToken, userController.updateUserProfile);
+app.put("/api/users/:id/profile-picture", authenticateToken, userController.updateProfilePicture);
 
-// Apply authentication middleware to routes that require it
-app.get("/api/users/profile", userController.findUser);
-app.get("/api/users", userController.getAllUsers);
-app.put("/api/users/profile/:id", userController.updateUserProfile);
-app.put("/api/users/:id/profile-picture", userController.updateProfilePicture);
+// Help and Support Routes
+app.post("/api/support", supportController.createSupportTicket);
+app.get("/api/support/tickets", supportController.getUserTickets);
+
+// Luggage Routes
+app.get("/api/luggage", authenticateToken, luggageController.getAllLuggage);
+app.get("/api/luggage/:id", authenticateToken, luggageController.getLuggageById);
+app.post("/api/luggage", authenticateToken, luggageController.addLuggage);
+app.put("/api/luggage/:id", authenticateToken, luggageController.updateLuggage);
+app.delete("/api/luggage/:id", authenticateToken, luggageController.deleteLuggage);
+
+// Payment Routes
+app.get("/api/plans", getPlans);
+app.post("/api/createOrder", createOrder);
+app.post("/api/verifyPayment", verifyPayment);
+
+// User Luggage and Tracking Routes
+app.post(
+  "/api/users/:userId/luggage", 
+  authenticateToken, 
+  requireRole('admin'), 
+  userController.addUserLuggage
+);
+
+app.post(
+  "/api/users/:userId/tracking-links", 
+  authenticateToken, 
+  requireRole('admin'), 
+  userController.addUserTrackingLink
+);
+
+// Insurance Routes
 app.post(
   "/select-insurance",
   authenticateToken,
   userController.selectInsurancePlan
 );
-// Help and Support Routes
-app.post("/api/support", supportController.createSupportTicket);
-app.get("/api/support/tickets", supportController.getUserTickets);
-
-// Luggage Routes with Role-based Protection
-app.get("/api/luggage", luggageController.getAllLuggage);
-app.get("/api/luggage/:id", luggageController.getLuggageById);
-// app.get("/api/luggage", authenticateToken, luggageController.getAllLuggage);
-// app.get("/api/luggage/:id", authenticateToken, luggageController.getLuggageById);
-
-// Admin Routes
-// app.post("/api/luggage", authenticateToken, requireRole('admin'), luggageController.addLuggage); // Admin only
-// app.put("/api/luggage/:id", authenticateToken, requireRole('admin'), luggageController.updateLuggage); // Admin only
-// app.delete("/api/luggage/:id", authenticateToken, requireRole('admin'), luggageController.deleteLuggage); // Admin only
-
-app.post("/api/luggage", luggageController.addLuggage); // Admin only
-app.put("/api/luggage/:id", luggageController.updateLuggage); // Admin only
-app.delete("/api/luggage/:id", luggageController.deleteLuggage); // Admin only
-
-//Payment Routes
-app.get("/api/plans", getPlans);
-app.post("/api/createOrder", createOrder);
-app.post("/api/verifyPayment", verifyPayment);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -88,7 +92,7 @@ app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
 
-// Add near the top of your server.js file
+// Create data directory and files if they don't exist
 const dataDir = path.join(__dirname, "data");
 if (!fs.existsSync(dataDir)) {
   fs.mkdirSync(dataDir, { recursive: true });

@@ -101,7 +101,7 @@ exports.updateUserProfile = async (req, res) => {
 // User registration
 //Vriti
 exports.registerUser = async (req, res) => {
-  const { username, email, password, role, trackingLinks } = req.body;
+  const { username, email, password, role } = req.body;
 
   try {
     // Validate email
@@ -140,8 +140,9 @@ exports.registerUser = async (req, res) => {
       phoneNumber: null,
       address: null,
       password: hashedPassword,
-      role: role || 'user', // Default role is 'user'
-      trackingLinks:[] // Store an array of tracking links
+      role: role || 'user',
+      trackingLinks: [],
+      luggage: []
     };
 
     UserModel.saveUser(newUser);
@@ -149,6 +150,51 @@ exports.registerUser = async (req, res) => {
     res.status(201).json({ message: "User registered successfully", trackingLinks: newUser.trackingLinks });
   } catch (error) {
     console.error("Error registering user:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+// Add new method to handle luggage for a user
+exports.addUserLuggage = async (req, res) => {
+  const { userId } = req.params;
+  const { name, status, location, num_lugg } = req.body;
+
+  try {
+    const user = await UserModel.getUserById(userId);
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    if (!name || !status || !location || num_lugg === undefined) {
+      return res.status(400).json({ message: "Missing required fields" });
+    }
+
+    // Create new luggage object
+    const newLuggage = {
+      id: Date.now().toString(), // Generate unique ID
+      name,
+      status,
+      location,
+      num_lugg
+    };
+
+    // Initialize luggage array if it doesn't exist
+    if (!user.luggage) {
+      user.luggage = [];
+    }
+
+    // Add luggage to user's luggage array
+    user.luggage.push(newLuggage);
+
+    // Update user in database
+    await UserModel.updateUser(userId, user);
+
+    res.status(201).json({
+      message: "Luggage added successfully",
+      luggage: newLuggage
+    });
+  } catch (error) {
+    console.error("Error adding luggage:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 };
@@ -216,7 +262,7 @@ exports.loginUser = async (req, res) => {
     }
 
     // Find the user based on username or email
-    const users = UserModel.getAllUsers(); // Adjust according to how you fetch users
+    const users = UserModel.getAllUsers();
     const user = users.find(
       (user) =>
         (username && user.username === username) ||
@@ -235,12 +281,21 @@ exports.loginUser = async (req, res) => {
 
     // Create JWT token with user id and role
     const token = jwt.sign(
-      { id: user.id, role: user.role },
+      { 
+        id: user.id, 
+        role: user.role,
+        username: user.username 
+      },
       process.env.JWT_SECRET,
       { expiresIn: "1h" }
     );
 
-    res.json({ token });
+    // Send token and role in response
+    res.json({ 
+      token,
+      role: user.role,
+      username: user.username
+    });
   } catch (error) {
     console.error("Error logging in user:", error);
     res.status(500).json({ error: "Internal server error" });
@@ -379,4 +434,66 @@ exports.updateProfilePicture = async (req, res) => {
       res.status(500).json({ error: 'Internal server error' });
     }
   });
+};
+
+exports.addUserLuggage = async (req, res) => {
+  const { userId } = req.params;
+  const { luggageId } = req.body;
+
+  try {
+    const user = await UserModel.getUserById(userId);
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Initialize luggage array if it doesn't exist
+    if (!user.luggage) {
+      user.luggage = [];
+    }
+
+    // Add luggage ID to user's luggage array
+    user.luggage.push(luggageId);
+
+    // Update user in database
+    await UserModel.updateUser(userId, user);
+
+    res.status(201).json({
+      message: "Luggage assigned successfully",
+      luggage: user.luggage
+    });
+  } catch (error) {
+    console.error("Error assigning luggage:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+exports.addUserTrackingLink = async (req, res) => {
+  const { userId } = req.params;
+  const { link } = req.body;
+
+  try {
+    const user = await UserModel.getUserById(userId);
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Initialize trackingLinks array if it doesn't exist
+    if (!user.trackingLinks) {
+      user.trackingLinks = [];
+    }
+
+    // Add new tracking link
+    user.trackingLinks.push(link);
+
+    // Update user in database
+    await UserModel.updateUser(userId, user);
+
+    res.status(201).json({
+      message: "Tracking link added successfully",
+      trackingLinks: user.trackingLinks
+    });
+  } catch (error) {
+    console.error("Error adding tracking link:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
 };
