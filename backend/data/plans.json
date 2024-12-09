@@ -1,17 +1,7 @@
 [
-    {
-      "id": "1",
-      "name": "Basic Plan",
-      "amount": 500
-    },
-    {
-      "id": "2",
-      "name": "Standard Plan",
-      "amount": 1000
-    },
-    {
-      "id": "3",
-      "name": "Premium Plan",
-      "amount": 2000
-    }
-    ]
+  {
+    "id": "1",
+    "name": "Comprehensive Protection",
+    "amount": 50000
+  }
+]

@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const LuggageModel = require("../models/luggageModel");
+const UserModel = require("../models/userModel");
 
 const luggageFilePath = path.join(__dirname, "../data/luggage.json");
 
@@ -43,29 +44,68 @@ exports.getLuggageById = (req, res) => {
 };
 
 // Khushi
-exports.addLuggage = (req, res) => {
-  const { name, status, location, num_lugg } = req.body;
+exports.addLuggage = async (req, res) => {
+  console.log("Received request body:", req.body);
 
-  if (!name || !status || !location || num_lugg === undefined) {
+  const { name, status, location, num_lugg, userId, trackingLink } = req.body;
+
+  if (!name || !status || !location || num_lugg === undefined || !userId) {
     return res.status(400).json({ message: "Missing required fields" });
   }
 
   try {
     const luggage = readData(luggageFilePath);
-    const maxId =
-      luggage.length > 0
-        ? Math.max(...luggage.map((luggageItem) => parseInt(luggageItem.id, 10)))
-         : 0;
+    const maxId = luggage.length > 0
+      ? Math.max(...luggage.map((luggageItem) => parseInt(luggageItem.id, 10)))
+      : 0;
     const newId = (maxId + 1).toString();
 
-    const newLuggage = new LuggageModel(newId, name, status, location, num_lugg);
+    const finalTrackingLink = trackingLink || `TRACK-${newId}-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
+
+    // Verify tracking link uniqueness
+    const isTrackingLinkTaken = luggage.some(item => item.trackingLink === finalTrackingLink);
+    if (isTrackingLinkTaken) {
+      return res.status(400).json({ message: "Tracking link already exists" });
+    }
+
+    const newLuggage = new LuggageModel(
+      newId, 
+      name, 
+      status, 
+      location, 
+      parseInt(num_lugg),
+      finalTrackingLink
+    );
 
     luggage.push(newLuggage);
     writeData(luggageFilePath, luggage);
 
-    return res.status(201).json({ message: "Luggage added successfully", luggage: newLuggage });
+    // Add only the tracking link to user's trackingLinks array
+    const user = await UserModel.getUserById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Initialize trackingLinks array if it doesn't exist
+    if (!user.trackingLinks) {
+      user.trackingLinks = [];
+    }
+
+    // Add the tracking link to user's trackingLinks array
+    user.trackingLinks.push(finalTrackingLink);
+    await UserModel.updateUser(userId, user);
+
+    return res.status(201).json({ 
+      message: "Luggage added successfully and tracking link assigned to user", 
+      luggage: newLuggage 
+    });
   } catch (error) {
-    return res.status(500).json({ message: "Error adding luggage", error });
+    console.error("Error in addLuggage:", error);
+    return res.status(500).json({ 
+      message: "Error adding luggage", 
+      error: error.message,
+      stack: error.stack 
+    });
   }
 };
 
@@ -114,44 +154,5 @@ exports.deleteLuggage = (req, res) => {
     res.status(200).json({ message: "Luggage deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: "Error deleting luggage", error });
-  }
-};
-
-exports.addUserTrackingLink = async (req, res) => {
-  const { userId } = req.params;
-  const { link } = req.body;
-
-  try {
-    // Validate tracking link
-    if (!link) {
-      return res.status(400).json({ error: 'Tracking link is required' });
-    }
-
-    // Read current user data
-    const users = readUserData();
-    const userIndex = users.findIndex(user => user.id === userId);
-
-    if (userIndex === -1) {
-      return res.status(404).json({ error: 'User not found' });
-    }
-
-    // Initialize trackingLinks array if it doesn't exist
-    if (!users[userIndex].trackingLinks) {
-      users[userIndex].trackingLinks = [];
-    }
-
-    // Add new tracking link
-    users[userIndex].trackingLinks.push(link);
-
-    // Save updated user data
-    writeUserData(users);
-
-    res.status(201).json({
-      message: 'Tracking link added successfully',
-      trackingLinks: users[userIndex].trackingLinks
-    });
-  } catch (error) {
-    console.error('Error adding tracking link to user:', error);
-    res.status(500).json({ error: 'Internal server error' });
   }
 };

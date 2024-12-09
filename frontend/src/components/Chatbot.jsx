@@ -10,7 +10,6 @@ const Chatbot = () => {
   const [showSuggestionPrompt, setShowSuggestionPrompt] = useState(false);
 
   useEffect(() => {
-    // Initial greeting when chatbot loads
     setChatHistory([
       { sender: "Bot", text: "Hi, I am your TrackMyBag Chatbot, Roboko. How can I help you?" }
     ]);
@@ -19,7 +18,6 @@ const Chatbot = () => {
   const handleQuerySubmit = async () => {
     if (!query.trim()) return;
 
-    // Handle "hi" locally
     if (query.trim().toLowerCase() === "hi" || query.trim().toLowerCase() === "hello") {
       setChatHistory(prev => [
         ...prev,
@@ -54,7 +52,6 @@ const Chatbot = () => {
   const handleSuggestionClick = async (id) => {
     const selectedSuggestion = suggestions.find(suggestion => suggestion.id === id);
 
-    // Add the selected question to chat history
     setChatHistory(prev => [
       ...prev,
       { sender: "User", text: selectedSuggestion.question }

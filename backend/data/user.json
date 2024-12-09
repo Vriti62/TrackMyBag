@@ -1,117 +1,167 @@
 [
   {
     "id": "1",
-    "username": "chloe",
-    "email": "c@gmail.com",
-    "password": "$2b$10$hzpp5dEqgvFyEAKrJCqCR.URR5rdH1NhuwX3lECcQAIyDMX7qCM2G",
-    "role": "user"
+    "username": "Vriti",
+    "email": "Jaitley@gmail.com",
+    "phoneNumber": null,
+    "address": null,
+    "password": "$2b$10$lBe2VjpjtdB.EPNJdaBoSO4iPUm4lFZTuzQvCOZZ4ujfEM2qkwVJy",
+    "role": "user",
+    "trackingLinks": [],
+    "insuranceClaimed": true,
+    "insuranceDetails": {
+      "planId": "1",
+      "purchaseDate": "2024-11-29T05:22:16.833Z",
+      "paymentId": "pay_PR0HbNeO9TayYO",
+      "orderId": "order_PR0HUsj6aOBasj"
+    }
   },
   {
     "id": "2",
-    "username": "priya",
-    "email": "priya@gmail.com",
-    "password": "$2b$10$LOR2xJYdMOF.HS6mvdEt3Owhq2I2.7Zsur0z/53W7GNJjPqp4j0uK",
-    "role": "admin"
+    "username": "Rahul",
+    "email": "rahul@gmail.com",
+    "phoneNumber": null,
+    "address": null,
+    "password": "$2b$10$f07Qw8UfV.V/ZTKj8oP4gOL104tjkdLnnOIfTEK9QYwh97fycUEy.",
+    "role": "admin",
+    "trackingLinks": [],
+    "insuranceClaimed": true,
+    "insuranceDetails": {
+      "planId": "1",
+      "purchaseDate": "2024-11-29T05:39:06.930Z",
+      "paymentId": "pay_PR0ZPHeJr18iee",
+      "orderId": "order_PR0ZGFYZzLObGu"
+    }
   },
   {
     "id": "3",
-    "username": "user1",
-    "email": "user@gmail.com",
-    "password": "$2b$10$z1HnBksssY6fsOaH1Gxg4u7/ap1nmzVMRyYO6EEZRqlA.0o6qQCgm",
-    "role": "user"
-  },
-  {
-    "id": "4",
-    "username": "admin2",
-    "email": "admin2@gmail.com",
-    "password": "$2b$10$/hqgBNAr56LILzzbq1KmguTVamO0X58waTJy6XxQyQtmux0Bv8Fk.",
-    "role": "admin"
-  },
-  {
-    "id": "5",
-    "username": "dev",
-    "email": "dev@gmail.com",
-    "password": "$2b$10$9Or1dpx.HrnUiki9FZquzetZApGGJHtcgw/3DmZqM7mZqQ2JaXg3C",
-    "role": "user"
-  },
-  {
-    "id": "6",
-    "username": "dev3",
-    "email": "dev3@gmail.com",
-    "password": "$2b$10$HtLcU9gDQtl1qzgdOWeCPuJRVLW1BFdmPJaElaZvBxrkFvgDw/CmK",
-    "role": "user"
-  },
-  {
-    "id": "7",
-    "username": "devadmin",
-    "email": "devadmin@gmail.com",
-    "password": "$2b$10$nodjTjpKJnueOtTmfF3MlOAVvImfn7kn01tEFxcqNxhU8qpmv7Oa6",
-    "role": "admin"
-  },
-  {
-    "id": "8",
-    "username": "123",
-    "email": "123@7.j",
-    "password": "$2b$10$Ibdwh2X4QY4udZbVpPhOxekzpBwGlPwJt9Gl6JpvaAwbBvyjgtUwi",
-    "role": "user"
-  },
-  {
-    "id": "9",
-    "username": "johnDoe",
-    "email": "john.doe@gmail.com",
-    "password": "$2b$10$q532FdcR6X56q9yxdrX7uu1Gelq1ceC8hofAhHQ/FIuw46Qi7VRlO",
+    "username": "Mia",
+    "email": "mia@gmail.com",
+    "phoneNumber": null,
+    "address": null,
+    "password": "$2b$10$PhHvEpYBNaWsBXqxoyxTGeHvNAUaV3LDFuNRreNMo9kaXnYTwFr.a",
     "role": "user",
     "trackingLinks": [
-      "https://76c4-117-235-136-140.ngrok-free.app"
+      "http://localhost:3002/",
+      "http://localhost:3003/"
+    ],
+    "insuranceClaimed": true,
+    "insuranceDetails": {
+      "planId": "1",
+      "purchaseDate": "2024-11-29T05:43:51.184Z",
+      "paymentId": "pay_PR0eOVNlboDniO",
+      "orderId": "order_PR0eHvCyy12d2X"
+    },
+    "profilePicture": "/uploads/profile-pictures/user-3-1732859064864.jpg",
+    "luggage": [
+      {
+        "id": "1",
+        "name": "kala basta",
+        "status": "In Transit",
+        "location": "T3",
+        "num_lugg": 1
+      }
     ]
   },
   {
+    "id": "4",
+    "username": "Mokshit",
+    "email": "moki@gmail.com",
+    "phoneNumber": null,
+    "address": null,
+    "password": "$2b$10$/WME8MChK6vzUC0xjXM5o.jMlAiKg3dFgwNHXJm0Nf9V6xpMWg/oK",
+    "role": "user",
+    "trackingLinks": []
+  },
+  {
+    "id": "5",
+    "username": "Lia",
+    "email": "Lia@gmail.com",
+    "phoneNumber": null,
+    "address": null,
+    "password": "$2b$10$7ARloGuTGZMwEVnen55hg.3awE5PKvQHNQZnwp/.8uO5DJCs6Hn6y",
+    "role": "user",
+    "trackingLinks": [],
+    "insuranceClaimed": true,
+    "insuranceDetails": {
+      "planId": "1",
+      "purchaseDate": "2024-11-29T09:14:52.521Z",
+      "paymentId": "pay_PR4FIlOWZxBcsq",
+      "orderId": "order_PR4FCdbPFjYgpo"
+    }
+  },
+  {
+    "id": "6",
+    "username": "Khushi",
+    "email": "Khushi@gmail.com",
+    "phoneNumber": null,
+    "address": null,
+    "password": "$2b$10$UHD1jnafGwCvWX5LBymMh.zfw.nOWT.9WfB1.SZLO5klpAaenP5nW",
+    "role": "user",
+    "trackingLinks": [],
+    "insuranceClaimed": true,
+    "insuranceDetails": {
+      "planId": "1",
+      "purchaseDate": "2024-11-29T09:25:57.740Z",
+      "paymentId": "pay_PR4R0Pd4Bn2mai",
+      "orderId": "order_PR4QpS7SS1qEUG"
+    }
+  },
+  {
+    "id": "7",
+    "username": "Machi",
+    "email": "Machi@gmail.com",
+    "phoneNumber": null,
+    "address": null,
+    "password": "$2b$10$RsAUY7vSPixt/AQbSScjauSkxqUPUKo/cSfPivjxpnxBgIj2SCrGW",
+    "role": "user",
+    "trackingLinks": []
+  },
+  {
+    "id": "8",
+    "username": "Ramansharma",
+    "email": "raman@gmail.com",
+    "phoneNumber": null,
+    "address": null,
+    "password": "$2b$10$H1EcEMc2aDdHB7okYT.Zp.Da.usSbXGmtYmlxE8qrgejOV4T9YMIC",
+    "role": "user",
+    "trackingLinks": [],
+    "insuranceClaimed": true,
+    "insuranceDetails": {
+      "planId": "1",
+      "purchaseDate": "2024-11-29T09:47:39.862Z",
+      "paymentId": "pay_PR4nwFP8XAx9YN",
+      "orderId": "order_PR4nniwvONUToj"
+    }
+  },
+  {
+    "id": "9",
+    "username": "yash",
+    "email": "yashmittal4949@gmail.com",
+    "phoneNumber": "8576",
+    "address": "defse",
+    "password": "$2b$10$8Wm71vtjMZu43sDU7q12qONwCcdKQEvGkpqIOrmDwRET1Ns01ax.e",
+    "role": "user",
+    "trackingLinks": []
+  },
+  {
     "id": "10",
-    "username": "Vriti",
-    "email": "vrtit123@gmail.com",
-    "password": "$2b$10$Cr2rH5JcbnHc4jmv5AE1COGBuJ6Q.qT/vrWFItwE2lVjpFzTzKZaK",
+    "username": "ayush",
+    "email": "ayush@gmail.com",
+    "phoneNumber": null,
+    "address": null,
+    "password": "$2b$10$xDngOHjC48VAWLOE9P9nmu7KrWx0FmnH.bBxYo5GKQVTk3EfLol3y",
     "role": "user",
     "trackingLinks": []
   },
   {
     "id": "11",
-    "username": "Rafe",
-    "email": "rafe123@gmail.com",
-    "password": "123",
-    "role": "user",
+    "username": "yashmit",
+    "email": "yashmit@gmail.com",
+    "phoneNumber": null,
+    "address": null,
+    "password": "$2b$10$3csKR7nmS6wgddpkE9lOx.Yx/9dueNMVgXOHAVzLniJGZ6DgFe9i6",
+    "role": "admin",
     "trackingLinks": []
-  },
-  {
-    "id": "12",
-    "username": "vriti",
-    "email": "vriti123@gmail.com",
-    "password": "$2b$10$HyuY.uqGBv3HOfi4ZSx1ou.k/N2zG55LddxRjdyaDs5JCapr4G.K2",
-    "role": "user",
-    "trackingLinks": []
-  },
-  {
-    "id": "13",
-    "email": "vriti@gmail.com",
-    "password": "$2b$10$nc16YzUplbNf1AUg2cABVu76S3yy7GW7pxvQCgodZ1AhpuwXKZ702",
-    "role": "user",
-    "trackingLinks": []
-  },
-  {
-    "id": "14",
-    "username": "chola",
-    "email": "chola@gmail.com",
-    "phoneNumber": "09499497282",
-    "address": "25/1, New Janak Puri",
-    "password": "$2b$10$8svh5hplCfAxdv0kCXzD7OmDMloMm.fgoQP/DuO6Wt1hE/veVFYYS",
-    "role": "user",
-    "trackingLinks": [],
-    "profilePicture": "/uploads/profile-pictures/user-14-1732780494517.jpg",
-    "insuranceClaimed": true,
-    "insuranceDetails": {
-      "planId": "1",
-      "purchaseDate": "2024-11-28T09:38:18.067Z",
-      "paymentId": "pay_PQg6vBV4LxafrV",
-      "orderId": "order_PQg6oEMgPZYtA0"
-    }
   }
 ]

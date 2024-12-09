@@ -192,7 +192,7 @@ export default function TrackMyBagDashboard() {
             <h1 className="dashboard__title">TrackMyBag</h1>
           </div>
           <div className="dashboard__header-actions">
-            <button onClick={() => navigate('/shop')} className="dashboard__shop-btn">
+            <button onClick={() => navigate('/ProductPage')} className="dashboard__shop-btn">
               <ShoppingCart className="dashboard__shop-icon" />
               <span>Shop</span>
             </button>
@@ -291,7 +291,7 @@ export default function TrackMyBagDashboard() {
             </p>
             {!userData?.insuranceClaimed && (
               <button 
-                onClick={() => navigate('/PaymentPage')} 
+                onClick={() => navigate('/insurancepayment')} 
                 className="dashboard__insurance-btn"
               >
                 Buy Insurance

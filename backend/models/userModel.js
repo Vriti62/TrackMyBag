@@ -99,6 +99,55 @@ class UserModel {
       return false;
     }
   }
+
+  // Add this method to UserModel class
+  static addLuggageToUser(userId, luggage) {
+    try {
+      const users = this.getAllUsers();
+      const userIndex = users.findIndex(user => user.id === userId);
+      
+      if (userIndex !== -1) {
+        if (!users[userIndex].luggage) {
+          users[userIndex].luggage = [];
+        }
+        users[userIndex].luggage.push(luggage);
+        fs.writeFileSync(USERS_FILE_PATH, JSON.stringify(users, null, 2));
+        return true;
+      }
+      return false;
+    } catch (error) {
+      console.error('Error adding luggage to user:', error);
+      return false;
+    }
+  }
+
+  static async updateUser(userId, updatedUser) {
+    try {
+      const users = this.getAllUsers();
+      const index = users.findIndex(user => user.id === userId);
+      
+      if (index === -1) {
+        return false;
+      }
+
+      users[index] = updatedUser;
+      fs.writeFileSync(USERS_FILE_PATH, JSON.stringify(users, null, 2));
+      return true;
+    } catch (error) {
+      console.error('Error updating user:', error);
+      throw error;
+    }
+  }
+
+  static async getUserById(userId) {
+    try {
+      const users = this.getAllUsers();
+      return users.find(user => user.id === userId);
+    } catch (error) {
+      console.error('Error getting user by ID:', error);
+      throw error;
+    }
+  }
 }
 
 module.exports = UserModel;
