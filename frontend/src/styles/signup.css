@@ -1,0 +1,275 @@
+/* General styling for the signup container */
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #f0f4ff, #e2e8f0);
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+}
+
+/* Floating 3D circles */
+.signup-container::before,
+.signup-container::after {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: rgba(142, 68, 173, 0.2);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.signup-container::before {
+    top: -50px;
+    left: -50px;
+}
+
+.signup-container::after {
+    bottom: -50px;
+    right: -50px;
+}
+
+/* Keyframe for floating effect */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-20px) scale(1.1);
+    }
+}
+
+/* Heading styling */
+.signup-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Paragraph styling */
+.signup-container p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #34495e;
+    text-align: center;
+}
+
+/* Form styling */
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 450px;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1;
+}
+
+/* Input field styling */
+.form input {
+    width: 100%;
+    padding: 15px 15px 15px 40px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+}
+
+.form input:focus {
+    border-color: #8e44ad;
+    outline: none;
+    box-shadow: 0 0 10px rgba(142, 68, 173, 0.5);
+}
+
+/* Button styling */
+.form button {
+    padding: 15px;
+    background-color: #8e44ad;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s, transform 0.2s;
+    perspective: 1000px;
+    margin-top: 10px;
+}
+
+.form button:hover {
+    background-color: #732d91;
+    transform: rotateX(15deg) translateY(-2px);
+}
+
+/* Error and success message styling */
+.error,
+.success {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin: 8px 0 16px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.4;
+    animation: slideIn 0.3s ease-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.error {
+    background-color: #fff5f5;
+    color: #e53e3e;
+    border: 1px solid #feb2b2;
+}
+
+.success {
+    background-color: #f0fff4;
+    color: #38a169;
+    border: 1px solid #9ae6b4;
+}
+
+/* Error and success icons */
+.error-icon,
+.success-icon {
+    margin-right: 12px;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.error .error-icon {
+    color: #e53e3e;
+}
+
+.success .success-icon {
+    color: #38a169;
+}
+
+/* Animation for error/success messages */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Password validation message styling */
+.error:has(+ input[type="password"]) {
+    font-size: 0.85rem;
+    padding: 10px 14px;
+    background-color: #fff8f8;
+    border-color: #fed7d7;
+    margin-top: -8px;
+    margin-bottom: 16px;
+}
+
+/* Email validation message styling */
+.error:has(+ input[type="email"]) {
+    font-size: 0.85rem;
+    padding: 10px 14px;
+    background-color: #fff8f8;
+    border-color: #fed7d7;
+    margin-top: -8px;
+    margin-bottom: 16px;
+}
+
+/* Link styling */
+.link {
+    color: #8e44ad;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+.link:hover {
+    color: #732d91;
+}
+
+/* Particles effect */
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.particles div {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: rgba(142, 68, 173, 0.4);
+    border-radius: 50%;
+    animation: particleMove 10s linear infinite;
+}
+
+@keyframes particleMove {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+/* Responsive styling */
+@media (max-width: 600px) {
+    .form {
+        padding: 20px;
+        width: 90%;
+    }
+
+    .signup-container h1 {
+        font-size: 2rem;
+    }
+
+    .form input {
+        padding: 12px 12px 12px 35px;
+    }
+
+    .form button {
+        font-size: 1rem;
+        padding: 12px;
+    }
+}
+
+/* Input icons positioning */
+.form div {
+    position: relative;
+}
+
+.form div i {
+    display: none;
+}
+
+/* Add these styles for input icons */
+.input-field-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8e44ad;
+    font-size: 1.2rem;
+}

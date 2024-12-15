@@ -1,0 +1,178 @@
+/* General styling for the login container */
+.login__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Center vertically */
+  background: linear-gradient(135deg, #f0f4ff, #e2e8f0); /* Soft background gradient */
+  position: relative; /* For 3D effects */
+  overflow: hidden; /* Hide overflowing 3D graphics */
+  padding: 20px;
+}
+
+/* Floating 3D circles */
+.login__container::before,
+.login__container::after {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: rgba(142, 68, 173, 0.2); /* Semi-transparent purple */
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.login__container::before {
+  top: -50px;
+  left: -50px;
+}
+
+.login__container::after {
+  bottom: -50px;
+  right: -50px;
+}
+
+/* Keyframe for floating effect */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.1);
+  }
+}
+
+/* Heading styling */
+.login__title {
+  font-size: 2.5rem; /* Increased size for prominence */
+  margin-bottom: 10px; /* Add space below */
+  color: #2c3e50; /* Dark color for better contrast */
+  font-weight: 700; /* Bold for emphasis */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
+}
+
+/* Paragraph styling */
+.login__subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #34495e;
+  text-align: center;
+}
+
+/* Styling for the form */
+.login__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 450px;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+  position: relative;
+  z-index: 1; /* Ensure it is above background elements */
+}
+
+/* Input field styling */
+.login__input-field-container {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.login__input-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #8e44ad;
+}
+
+.login__input-field {
+  padding: 15px 15px 15px 40px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 87%;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.login__input-field:focus {
+  border-color: #8e44ad;
+  outline: none;
+  box-shadow: 0 0 10px rgba(142, 68, 173, 0.5); /* Brighter shadow */
+}
+
+/* Button styling */
+.login__button {
+  padding: 15px;
+  background-color: #8e44ad;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s, transform 0.2s;
+  perspective: 1000px; /* Perspective for 3D effect */
+}
+
+.login__button:hover {
+  background-color: #732d91;
+  transform: rotateX(15deg) translateY(-2px); /* 3D lift effect */
+}
+
+/* Error message styling */
+.login__error-message {
+  color: #e74c3c;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
+.error-icon {
+  margin-right: 8px; /* Space between icon and text */
+}
+
+/* Particles effect */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allow clicks through */
+  z-index: 0;
+}
+
+.particles div {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: rgba(142, 68, 173, 0.4);
+  border-radius: 50%;
+  animation: particleMove 10s linear infinite;
+}
+
+@keyframes particleMove {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+/* Responsive styling */
+@media (max-width: 600px) {
+  .login__form {
+    padding: 20px;
+  }
+
+  .login__button {
+    font-size: 1rem;
+  }
+}
+.bold-text {
+  font-weight: bold;
+}

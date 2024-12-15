@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "question": "How do I register for TrackMyBag?",
+    "answer": "You can sign up by providing your email, username, and a secure password. After registration, you'll have a profile to manage your luggage."
+  },
+  {
+    "id": 2,
+    "question": "How can I track my luggage in real-time?",
+    "answer": "Real-time tracking is enabled by GPS trackers on your luggage. You can view the location updates through the web-based interface."
+  },
+  {
+    "id": 3,
+    "question": "What should I do if I lose my luggage?",
+    "answer": "You can report your lost luggage using the 'Support' feature. A support ticket will be created, and our team will assist in tracking it down."
+  },
+  {
+    "id": 4,
+    "question": "How can I receive updates on my luggage?",
+    "answer": "You will receive notifications via SMS or email whenever there are updates or changes in the location of your luggage."
+  },
+  {
+    "id": 5,
+    "question": "How do the alerts work for luggage proximity?",
+    "answer": "If your luggage is within 50 meters, you'll receive an alert to remind you to pick it up. If it's within 100 meters, you'll be alerted that it’s lost and shown its last recorded location."
+  },
+  {
+    "id": 6,
+    "question": "Can I track my luggage on multiple transport modes like flights, buses, and trains?",
+    "answer": "Yes, the application supports tracking luggage across multiple transport modes, ensuring you’re always updated on its location."
+  },
+  {
+    "id": 7,
+    "question": "How do I upload or change my profile picture?",
+    "answer": "You can easily upload or update your profile picture in the settings of your TrackMyBag profile."
+  },
+  {
+    "id": 8,
+    "question": "What should I do if the tracker on my luggage is not working?",
+    "answer": "If the tracker is malfunctioning, please contact support through the app, and we’ll help you troubleshoot or replace it."
+  },
+  {
+    "id": 9,
+    "question": "How do I update my luggage’s location manually?",
+    "answer": "The system automatically updates the luggage location through GPS. Manual updates are not required."
+  },
+  {
+    "id": 10,
+    "question": "Can I track more than one piece of luggage?",
+    "answer": "Yes, you can add multiple items to your profile and track all of them simultaneously."
+  },
+  {
+    "id": 11,
+    "question": "How do I create a support ticket for my lost luggage?",
+    "answer": "You can easily open a support ticket by accessing the 'Lost Luggage Reporting' section on the app. Provide the necessary details, and our support team will assist you."
+  },
+  {
+    "id": 12,
+    "question": "Is there a way to get notified when my luggage is near?",
+    "answer": "Yes, you will receive proximity alerts when your luggage is within 50 meters or 100 meters, depending on its location."
+  },
+  {
+    "id": 13,
+    "question": "How do I reset my password if I forget it?",
+    "answer": "You can reset your password by clicking the 'Forgot Password' link on the login page, where you’ll be prompted to enter your email to receive a reset link."
+  },
+  {
+    "id": 14,
+    "question": "What types of notifications will I receive?",
+    "answer": "Notifications will include updates on your luggage’s location, alerts for lost luggage, and status changes regarding your luggage."
+  },
+  {
+    "id": 15,
+    "question": "Can I track luggage without using a smartphone?",
+    "answer": "Currently, the tracking is available through the mobile app or web-based interface, which requires an internet connection."
+  },
+  {
+    "id": 16,
+    "question": "How does the tracker communicate the luggage location?",
+    "answer": "The GPS tracker on your luggage communicates location data to the backend system, which then updates the web interface or sends notifications."
+  },
+  {
+    "id": 17,
+    "question": "What should I do if I experience issues with the app?",
+    "answer": "For troubleshooting, you can check the FAQ section, or contact support through the 'Support Queries' feature for assistance with app issues."
+  },
+  {
+    "id": 18,
+    "question": "How can I update my luggage details?",
+    "answer": "You can update the details of your luggage in the profile section of the app, including the name, description, and other relevant information."
+  },
+  {
+    "id": 19,
+    "question": "What are the steps to ensure my luggage is properly tracked?",
+    "answer": "Ensure that the GPS tracker is correctly attached to your luggage and that your app is connected to the internet for receiving location updates."
+  },
+  {
+    "id": 20,
+    "question": "How do I delete my account?",
+    "answer": "To delete your account, go to the settings in the app, where you will find the option to delete your profile and all related data."
+  }
+]
