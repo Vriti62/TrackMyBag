@@ -280,5 +280,18 @@
     "profilePicture": null,
     "hasInsurance": false,
     "insuranceDate": null
+  },
+  {
+    "id": "20",
+    "username": "peter",
+    "email": "peter@gmail.com",
+    "phoneNumber": null,
+    "address": null,
+    "password": "$2b$10$CzkmSOGqiPsVihEb8lbeq.5Z8DTvMmJYH7ie48CSq9jQYrC3bkbFq",
+    "role": "user",
+    "trackingLinks": [],
+    "profilePicture": null,
+    "hasInsurance": false,
+    "insuranceDate": null
   }
 ]

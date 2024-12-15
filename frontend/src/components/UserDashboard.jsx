@@ -12,6 +12,7 @@ import {
   Shield,
   ShoppingCart,
   Package,
+  HelpCircle,
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom"; // Import useNavigate for redirection
 import "../styles/UserDashboard.css";
@@ -245,6 +246,12 @@ export default function TrackMyBagDashboard() {
               <ShoppingCart className="dashboard__shop-icon" />
               <span>Shop</span>
             </button>
+
+            <button onClick={() => navigate('/support')} className="dashboard__support-btn">
+              <HelpCircle className="dashboard__support-icon" />
+              <span>Support</span>
+            </button>
+            
             <button onClick={handleLogout} className="dashboard__logout-btn">
               <LogOut className="dashboard__logout-icon" />
               <span>Logout</span>

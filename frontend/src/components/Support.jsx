@@ -86,7 +86,7 @@ function Support() {
           Submit
         </button>
 
-        <button type="button" onClick={() => navigate('/')}>
+        <button type="button" onClick={() => navigate('/userdashboard')}>
           Go back to homepage
         </button>
       </form>
