@@ -293,5 +293,31 @@
     "profilePicture": null,
     "hasInsurance": false,
     "insuranceDate": null
+  },
+  {
+    "id": "21",
+    "username": "Vriti Jaitley",
+    "email": "jaitleyvriti@gmail.com",
+    "phoneNumber": null,
+    "address": null,
+    "password": "$2b$10$fsF2L9/CZji5sEgkYEwM6.obRvsLWO.Dnme6BNjDOQhviiSPT/53O",
+    "role": "user",
+    "trackingLinks": [],
+    "profilePicture": null,
+    "hasInsurance": true,
+    "insuranceDate": "2024-12-16T07:34:10.702Z"
+  },
+  {
+    "id": "22",
+    "username": "kachra",
+    "email": "kachra@gmail.com",
+    "phoneNumber": null,
+    "address": null,
+    "password": "$2b$10$vkYqDdyew.YO7GV5SYqGl.ZCKufV9z4PRmc0RNag1r57GAiynHDQe",
+    "role": "admin",
+    "trackingLinks": [],
+    "profilePicture": "/uploads/profile-pictures/profilePicture-1736762359459-411527471.jpg",
+    "hasInsurance": true,
+    "insuranceDate": "2025-01-13T09:39:32.070Z"
   }
 ]
