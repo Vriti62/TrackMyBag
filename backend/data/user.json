@@ -319,5 +319,18 @@
     "profilePicture": "/uploads/profile-pictures/profilePicture-1736762359459-411527471.jpg",
     "hasInsurance": true,
     "insuranceDate": "2025-01-13T09:39:32.070Z"
+  },
+  {
+    "id": "23",
+    "username": "vriti",
+    "email": "j@gmail.com",
+    "phoneNumber": "1234567890",
+    "address": "9, Rose Street, Philips colony",
+    "password": "$2b$10$q12edwliWzXD/Nk/ZIlu6.60kgTJNUSn6Z3TNnapjEgxlX233dgcO",
+    "role": "admin",
+    "trackingLinks": [],
+    "profilePicture": "/uploads/profile-pictures/profilePicture-1753712778499-805228870.png",
+    "hasInsurance": true,
+    "insuranceDate": "2025-07-28T14:27:37.296Z"
   }
 ]

@@ -1,36 +1,31 @@
-const SupportModel = require('../models/supportModel');// Import the functions directly
+const SupportTicket = require('../models/SupportTicket');
 
 // Create a support ticket
-exports.createSupportTicket = (req, res) => {
-  const { userName, subject, message } = req.body;
-
+exports.createSupportTicket = async (req, res) => {
   try {
-    const tickets = SupportModel.getAllTickets(); // Use SupportModel function
-    const newTicket = {
-      userName : userName,
-      subject: subject,
-      message: message,
-      status: 'open', // Default status when a ticket is created
-      createdAt: new Date().toISOString()
-    };
+    const userId = req.user?.userId || req.body.userId;
+    const { subject, message } = req.body;
+    if (!userId || !subject || !message)
+      return res.status(400).json({ error: 'All fields are required.' });
 
-    SupportModel.addTicket(newTicket); // Use SupportModel function
+    const ticket = new SupportTicket({ userId, subject, message });
+    await ticket.save();
 
-    res.status(201).json({ message: 'Support ticket created successfully', ticket: newTicket });
+    res.status(201).json({ message: 'Support ticket created.', ticket });
   } catch (error) {
-    console.error("Error creating support ticket:", error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: 'Failed to create support ticket.' });
   }
 };
 
 // Get all support tickets for a user
-exports.getUserTickets = (req, res) => {
-
+exports.getUserTickets = async (req, res) => {
   try {
-    const tickets = SupportModel.getAllTickets(); // Use SupportModel function
-    res.status(200).json(tickets);
+    const userId = req.user?.userId || req.query.userId;
+    if (!userId) return res.status(400).json({ error: 'User ID required.' });
+
+    const tickets = await SupportTicket.find({ userId });
+    res.json(tickets);
   } catch (error) {
-    console.error("Error fetching user tickets:", error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: 'Failed to fetch support tickets.' });
   }
 };

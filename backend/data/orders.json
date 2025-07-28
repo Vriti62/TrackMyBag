@@ -372,5 +372,27 @@
     ],
     "status": "Placed",
     "date": "2024-12-13T10:17:26.133Z"
+  },
+  {
+    "id": "order_QyWK7bVOcaAoMY",
+    "amount": 560000,
+    "currency": "INR",
+    "customerInfo": {
+      "name": "Vriti",
+      "email": "j@gmail.com",
+      "address": "london street",
+      "phone": "1234567890",
+      "userId": "123"
+    },
+    "items": [
+      {
+        "name": "TrackMyBag Tracker",
+        "price": 5600,
+        "image": "1732720492007-338923187.jpg",
+        "quantity": 1
+      }
+    ],
+    "status": "Placed",
+    "date": "2025-07-28T14:28:08.789Z"
   }
 ]

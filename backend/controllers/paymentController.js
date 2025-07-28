@@ -3,6 +3,7 @@ const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
 require('dotenv').config();
+const Payment = require('../models/Payment');
 
 
 
@@ -76,7 +77,7 @@ exports.createOrder = async (req, res) => {
 
 
 
-exports.verifyPayment = (req, res) => {
+exports.verifyPayment = async (req, res) => {
   const { 
     razorpay_order_id, 
     razorpay_payment_id, 
@@ -135,5 +136,30 @@ exports.verifyPayment = (req, res) => {
     }
   } else {
     res.status(400).json({ success: false, message: 'Invalid payment signature' });
+  }
+};
+
+// Example: Save payment after verification
+exports.verifyPayment = async (req, res) => {
+  const { userId, orderId, paymentId, amount, currency, status } = req.body;
+  try {
+    const payment = new Payment({ userId, orderId, paymentId, amount, currency, status });
+    await payment.save();
+    res.status(201).json({ message: 'Payment recorded.', payment });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to record payment.' });
+  }
+};
+
+// Example: Get all payments for a user
+exports.getUserPayments = async (req, res) => {
+  try {
+    const userId = req.user?.userId || req.query.userId;
+    if (!userId) return res.status(400).json({ error: 'User ID required.' });
+
+    const payments = await Payment.find({ userId });
+    res.json(payments);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch payments.' });
   }
 };

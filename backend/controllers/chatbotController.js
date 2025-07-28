@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const ChatbotResponse = require('../models/ChatbotResponse');
 
 
 const chatbotDataPath = path.join(__dirname, '../data/chatbotResponses.json');
@@ -22,52 +23,58 @@ const getRandomQuestions = (array, count) => {
 
 let matchedQuestions = [];
 
-const getResponse = (req, res) => {
+const getResponse = async (req, res) => {
   const { query, selectedQuestionIndex } = req.body;
 
 
   if (query) {
     const lowerCaseQuery = query.trim().toLowerCase();
-    const chatbotData = readChatbotData();
+    try {
+      const chatbotData = await ChatbotResponse.find({
+        question: { $regex: lowerCaseQuery, $options: 'i' }
+      });
 
-    matchedQuestions = chatbotData.filter(item =>
-      item.question.toLowerCase().includes(lowerCaseQuery)
-    );
+      matchedQuestions = chatbotData;
 
-    if (matchedQuestions.length === 0) {
-      return res.json({ reply: 'No matching questions found. Please try again.' });
+      if (matchedQuestions.length === 0) {
+        return res.json({ reply: 'No matching questions found. Please try again.' });
+      }
+
+      const randomQuestions = getRandomQuestions(matchedQuestions, 5);
+
+      return res.json({
+        suggestions: randomQuestions.map((item, index) => ({
+          id: item._id,
+          question: item.question,
+        })),
+      });
+    } catch (err) {
+      return res.status(500).json({ reply: 'Error searching chatbot data.' });
     }
-
-    const randomQuestions = getRandomQuestions(matchedQuestions, 5);
-
-    return res.json({
-      suggestions: randomQuestions.map((item, index) => ({
-        id: item.id || index + 1, 
-        question: item.question,
-      })),
-    });
   }
 
-  if (typeof selectedQuestionIndex === 'number') {
-    const selectedQuestion = matchedQuestions.find(
-      question => question.id === selectedQuestionIndex
-    );
+  if (selectedQuestionIndex) {
+    try {
+      const selectedQuestion = await ChatbotResponse.findById(selectedQuestionIndex);
 
-    if (!selectedQuestion) {
-      return res.status(400).json({
-        reply: 'Invalid question ID selected. Please select a valid question from the list.',
-      });
+      if (!selectedQuestion) {
+        return res.status(400).json({
+          reply: 'Invalid question ID selected. Please select a valid question from the list.',
+        });
+      }
+
+      const selectedAnswer = selectedQuestion.answer;
+
+      if (selectedAnswer) {
+        return res.json({
+          reply: selectedAnswer,
+        });
+      }
+
+      return res.status(400).json({ reply: 'Answer not found for the selected question.' });
+    } catch (err) {
+      return res.status(500).json({ reply: 'Error retrieving answer.' });
     }
-
-    const selectedAnswer = selectedQuestion.answer;
-
-    if (selectedAnswer) {
-      return res.json({
-        reply: selectedAnswer,
-      });
-    }
-
-    return res.status(400).json({ reply: 'Answer not found for the selected question.' });
   }
 
   return res.status(400).json({ reply: 'Query or question ID is required.' });
